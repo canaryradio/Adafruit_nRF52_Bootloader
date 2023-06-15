@@ -35,6 +35,7 @@ jobs:
           - 'bast_ble'
           - 'bluemicro_nrf52833'
           - 'bluemicro_nrf52840'
+          - 'canary'
           - 'challenger_840_ble'
           - 'ebyte_e104_bt5032a'
           - 'ebyte_e73_tbb'
