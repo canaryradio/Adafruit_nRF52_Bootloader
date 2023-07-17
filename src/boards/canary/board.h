@@ -43,6 +43,7 @@
 #define BUTTON_1       _PINNUM(0, 16)
 #define BUTTON_2       _PINNUM(0, 15)
 #define BUTTON_PULL    NRF_GPIO_PIN_PULLUP
+#define RESET_CHIP     1
 
 //--------------------------------------------------------------------+
 // BLE OTA

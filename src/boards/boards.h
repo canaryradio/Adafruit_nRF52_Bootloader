@@ -61,6 +61,11 @@
 #define BOARD_RGB_BRIGHTNESS 0x101010
 #endif
 
+// Rest chip support for devices with a battery and no dedicated reset button
+#ifndef RESET_CHIP
+#define RESET_CHIP 0
+#endif
+
 // Power configuration - should we enable DC/DC converters? (requires inductors on board)
 #ifndef ENABLE_DCDC_0
 #define ENABLE_DCDC_0 0
