@@ -49,7 +49,7 @@
 // BLE OTA
 //--------------------------------------------------------------------+
 #define BLEDIS_MANUFACTURER  "Canary-Radio-Company"
-#define BLEDIS_MODEL         "CANARY_V1"
+#define BLEDIS_MODEL         "CANARYONE"
 
 //--------------------------------------------------------------------+
 // USB
@@ -60,9 +60,9 @@
 #define USB_DESC_CDC_ONLY_PID  0x009F
 
 //------------- UF2 -------------//
-#define UF2_PRODUCT_NAME  "Canary V1"
+#define UF2_PRODUCT_NAME  "Canary One"
 #define UF2_VOLUME_LABEL   "CANARYBOOT"
-#define UF2_BOARD_ID      "CANARY_V1"
+#define UF2_BOARD_ID      "CANARYONE"
 #define UF2_INDEX_URL     "https://canaryradio.io"
 
 #endif // CANARY_H
