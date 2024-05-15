@@ -1,6 +1,8 @@
 #include "boards.h"
 #include "uf2/configkeys.h"
 
+#define LED_THREE_PIN     _PINNUM(0, 14) // White
+
 __attribute__((used, section(".bootloaderConfig")))
 const uint32_t bootloaderConfig[] =
 {
@@ -17,3 +19,10 @@ const uint32_t bootloaderConfig[] =
   0, 0, 0, 0, 0, 0, 0, 0
   /* CF2 END */
 };
+
+void board_init2(void)
+{
+  // Set the LED pins as output
+  nrf_gpio_cfg_output(LED_THREE_PIN);
+  nrf_gpio_pin_write(LED_THREE_PIN, LED_STATE_ON);
+}
