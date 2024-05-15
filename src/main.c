@@ -258,11 +258,30 @@ static void check_dfu_mode(void)
   if (dfu_skip) return;
 
   /*------------- Determine DFU mode (Serial, OTA, FRESET or normal) -------------*/
+
+#ifdef RESET_CHIP  
+  // If both buttons are pressed --> skip dfu
+  // This is for boards that have no reset button
+  // but pressing both buttons will reset the chip
+  // after 10 seconds
+
+  // Wait 3 seconds before reading button state to allow user to release the buttons
+  NRFX_DELAY_MS(3000); 
+
+  bool const reset_only = ( button_pressed(BUTTON_DFU) && button_pressed(BUTTON_FRESET) ) ;
+  if (reset_only) return;
+
+  // DFU button pressed
+  dfu_start = dfu_start || button_pressed(BUTTON_DFU);
+  _ota_dfu = _ota_dfu || button_pressed(BUTTON_FRESET);
+  if (_ota_dfu) dfu_start = true;
+#else
   // DFU button pressed
   dfu_start = dfu_start || button_pressed(BUTTON_DFU);
 
   // DFU + FRESET are pressed --> OTA
   _ota_dfu = _ota_dfu  || ( button_pressed(BUTTON_DFU) && button_pressed(BUTTON_FRESET) ) ;
+#endif
 
   bool const valid_app = bootloader_app_is_valid();
   bool const just_start_app = valid_app && !dfu_start && (*dbl_reset_mem) == DFU_DBL_RESET_APP;
